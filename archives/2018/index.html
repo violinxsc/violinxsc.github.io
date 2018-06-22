@@ -44,9 +44,28 @@
 
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+    <style>
+    .pace .pace-progress {
+        background: #191970; /*进度条颜色*/
+        height: 5px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #191970;    /*上边框颜色*/
+        border-left-color: #191970;    /*左边框颜色*/
+    }
+
+</style>
 </head>
 
 <body>
+    
+        <script type="text/javascript" color="0,0,255" zIndex="0" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+    
     <div id="wrap">
         <header id="header" style="background-image: url(http://wx2.sinaimg.cn/mw690/0060lm7Tly1fsiuygmd95j311y0hsgpc.jpg); background-repeat:no-repeat; background-size:100% 100%;">
     <div id="header-outer" class="outer">
@@ -61,6 +80,12 @@
                             <p class="subtitle">白夜之上，暗夜难将</p>
                         </h2>
                     
+		    <div class="aplayer"
+			data-name="芦苇荡"
+			data-artist="群星"
+			data-url="https://resource-1256567675.cos.ap-beijing.myqcloud.com/%E7%BE%A4%E6%98%9F%20-%20%E8%8A%A6%E8%8B%87%E8%8D%A1.mp3"
+			data-cover="https://resource-1256567675.cos.ap-beijing.myqcloud.com/%E8%8A%A6%E8%8B%87%E8%8D%A1.jpg">
+		    </div>
                 </div>
                 <div id="header-inner" class="nav-container">
                     <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
@@ -123,6 +148,7 @@
         </div>
     </div>
 </header>
+<a href="https://github.com/violinxsc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -163,7 +189,7 @@
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://yoursite.com/2018/06/19/hexo博客教程/"><span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span></span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://yoursite.com/2018/06/19/hexo博客教程/"></span>
     
 </span>
 
@@ -223,7 +249,7 @@ Node.js 是一个基于 Chrom
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://yoursite.com/2018/06/15/hello-world/"><span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span></span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://yoursite.com/2018/06/15/hello-world/"></span>
     
 </span>
 
@@ -248,7 +274,15 @@ Node.js 是一个基于 Chrom
         <p class="article-excerpt">
             欢迎使用
 
-Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+        
+            
+        
+        
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-pmYMFPum"),
+            narrow: false,
+            autoplay: true,
+
         </p>
     </div>
 </article>
@@ -451,6 +485,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
+<script src="/js/love.js"></script>
 
     </div>
 </body>
