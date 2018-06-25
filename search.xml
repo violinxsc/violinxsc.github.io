@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F06%2F15%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[欢迎使用 var ap = new APlayer({ element: document.getElementById("aplayer-pmYMFPum"), narrow: false, autoplay: true, showlrc: false, music: { title: "芦苇荡", author: "群星", url: "https://resource-1256567675.cos.ap-beijing.myqcloud.com/%E7%BE%A4%E6%98%9F%20-%20%E8%8A%A6%E8%8B%87%E8%8D%A1.mp3", pic: "https://resource-1256567675.cos.ap-beijing.myqcloud.com/%E8%8A%A6%E8%8B%87%E8%8D%A1.jpg", lrc: "" } }); window.aplayers || (window.aplayers = []); window.aplayers.push(ap); Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <content type="text"><![CDATA[欢迎使用 Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
       <categories>
         <category>无言</category>
       </categories>
