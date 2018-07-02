@@ -6,17 +6,21 @@
     
 
     
-    <title>分类：: 无言 | 终</title>
+    <title>视频 | 终</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="终">
-<meta property="og:url" content="http://yoursite.com/categories/无言/index.html">
+    <meta name="description" content="创建时间:2018-06-28              |      	浏览次数:次        	Photos 	Musics 	Videos   	 		 	    var myVid=document.getElementById(&quot;video&quot;); var url=&quot;https://videos-1256567675.cos.ap-">
+<meta property="og:type" content="website">
+<meta property="og:title" content="视频">
+<meta property="og:url" content="http://yoursite.com/videos/index.html">
 <meta property="og:site_name" content="终">
+<meta property="og:description" content="创建时间:2018-06-28              |      	浏览次数:次        	Photos 	Musics 	Videos   	 		 	    var myVid=document.getElementById(&quot;video&quot;); var url=&quot;https://videos-1256567675.cos.ap-">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-02T01:58:11.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="终">
+<meta name="twitter:title" content="视频">
+<meta name="twitter:description" content="创建时间:2018-06-28              |      	浏览次数:次        	Photos 	Musics 	Videos   	 		 	    var myVid=document.getElementById(&quot;video&quot;); var url=&quot;https://videos-1256567675.cos.ap-">
     
 
     
@@ -170,78 +174,123 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-folder-open"></i>分类：: <em class="page-title-link">无言</em>
+    <em class="page-title-link" data-url="/videos/index.html">视频</em>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/06/15/hello-world/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/perBg.png)" alt="Hello World" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://yoursite.com/2018/06/15/hello-world/"></span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/无言/">无言</a>
-            </div>
-            <div class="date"><time datetime="2018-06-15T06:08:03.325Z" itemprop="datePublished">2018-06-15</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/06/15/hello-world/">Hello World</a>
+        视频
         </h1>
     
 
-        <p class="article-excerpt">
-            欢迎使用
+            </header>
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+	    <!-- 目录内容 -->
+             
+        <!-- 目录内容结束 -->
+            <div class="article-meta" style="padding-bottom:10px">
+    <div class="article-date">
+        <span class="article-date" style="color:#555">
+            <i class="fa fa-calendar fa-fw"></i>创建时间:<time datetime="2018-06-28T15:12:06.000Z" itemprop="datePublished">2018-06-28</time>
+        </span>
+    </div>|
+    <span id="busuanzi_container_page_pv">
+	<i class="fa fa-book fa-fw"></i>浏览次数:<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+<div class="photos-btn-wrap">
+	<a class="photos-btn" href="/photos">Photos</a>
+	<a class="photos-btn" href="/musics">Musics</a>
+	<a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="noopener">Videos</a>
+</div>
+<ul id="app">
+	<template v-for="bean in list">
+		<li><a href="javascript:void(0)" v-on:click="playVideo(bean);" target="_blank" rel="noopener"><span v-html="bean"></span></a></li>
+	</template>
+</ul>
+<video poster="../images/video.png" class="" id="video" controls="controls" loop="loop"></video>
+<script>
+var myVid=document.getElementById("video");
+var url="https://videos-1256567675.cos.ap-beijing.myqcloud.com/";
+$(document).ready(function(){
+	var array=new Array();
+	$.get(url,function(data){
+		var objList= data.getElementsByTagName('Key');    //获取视频项目列表
+		for(var i=0;i<objList.length;i++){
+			var keyStr=objList[i].innerHTML;
+			if(keyStr.indexOf("/")==-1){
+				array.push(objList[i].innerHTML);
+			}
+		}
+		var app=new Vue({
+		  el: '#app',
+		  data: {
+		    list:array
+		  }
+		});
+	}
+	);
+});
+//播放视频
+function playVideo(name){
+	myVid.src=url+name;   ///待修改
+	myVid.load();
+	myVid.play();
+}
+</script>
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣">豆瓣</a>
+
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
 
 
 
-Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHu
-        </p>
+        </footer>
     </div>
 </article>
-    
-        </div>
-    
-
-
-    </div></section>
-
-
 
 
                         </div>

@@ -21,7 +21,7 @@
 <meta property="og:description" content="hexo博客搭建的简单教程前言　教程写的不好，请见谅！主要也就是把自己的搭建过程写一下，防止以后忘记。以下是初步截图：本教程的主要内容如下:   安装NodeJs 安装hexo 部署本地项目 安装Git 搭桥至github 博客个性化配置 结尾感想   1. 安装NodeJs　对于初学者，最先的就是搭建nodejs的环境，这是hexo博客最基础的运行环境。  Node.js 是一个基于 Chrom">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/blog.png">
-<meta property="og:updated_time" content="2018-06-21T06:51:37.361Z">
+<meta property="og:updated_time" content="2018-06-26T06:20:04.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客教程">
 <meta name="twitter:description" content="hexo博客搭建的简单教程前言　教程写的不好，请见谅！主要也就是把自己的搭建过程写一下，防止以后忘记。以下是初步截图：本教程的主要内容如下:   安装NodeJs 安装hexo 部署本地项目 安装Git 搭桥至github 博客个性化配置 结尾感想   1. 安装NodeJs　对于初学者，最先的就是搭建nodejs的环境，这是hexo博客最基础的运行环境。  Node.js 是一个基于 Chrom">
@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
     <link rel="stylesheet" href="/css/style.css">
-
+    
     <script src="/libs/jquery/2.2.4/jquery.min.js"></script>
     
     
@@ -52,26 +52,31 @@
     
 
 
+
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
     <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
     <style>
-    .pace .pace-progress {
-        background: #191970; /*进度条颜色*/
-        height: 5px;
-    }
-    .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
-    }
-    .pace .pace-activity {
-        border-top-color: #191970;    /*上边框颜色*/
-        border-left-color: #191970;    /*左边框颜色*/
-    }
+	    .pace .pace-progress {
+		background: #191970; /*进度条颜色*/
+		height: 5px;
+	    }
+	    .pace .pace-progress-inner {
+		 box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+	    }
+	    .pace .pace-activity {
+		border-top-color: #191970;    /*上边框颜色*/
+		border-left-color: #191970;    /*左边框颜色*/
+	    }
     
-</style>
+    </style>
     <link rel="stylesheet" href="/css/APlayer.min.css">
     <script src="/libs/player/APlayer.min.js"></script>
     <script src="/libs/player/Meting.min.js"></script>
+    <link rel="stylesheet" href="/css/ins.css">
+    <link rel="stylesheet" href="/photoSwipe/photoswipe.css">
+    <link rel="stylesheet" href="/photoSwipe/default-skin.css">
+    <script src="/js/vue.min.js"></script>
 </head>
 
 <body>
@@ -112,6 +117,10 @@
                             
                                         <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IT/">IT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/无言/">无言</a></li></ul>
                                     
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/photos/">相册</a>
+                                </li>
+                            
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
@@ -162,7 +171,7 @@
         </div>
     </div>
 </header>
-<a href="https://github.com/violinxsc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/violinxsc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://resource-1256567675.cos.ap-beijing.myqcloud.com/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -205,9 +214,9 @@
 		&nbsp;|&nbsp;
 		<span id="busuanzi_container_page_pv"><i class="fa fa-book fa-fw"></i>阅读量:<span id="busuanzi_value_page_pv"></span>次</span>
 		&nbsp;|&nbsp;
-		<i class="fa fa-file-text fa-fw"></i>字数统计<span class="post-count">1,139字</span>
+		<i class="fa fa-file-text fa-fw"></i>字数统计<span class="post-count">1,215字</span>
 		&nbsp;|&nbsp;
-		<i class="fa fa-clock-o fa-fw"></i>阅读时长<span class="post-count">4分钟</span>
+		<i class="fa fa-clock-o fa-fw"></i>阅读时长<span class="post-count">5分钟</span>
             </div>
         
         
@@ -285,7 +294,17 @@
 <p>其中deploy过程中需要输入GitHub的账号密码，成功部署后，输入<code>http://yourgithubname.github.io</code>即可查看博客了，你的博客就可以让别人看见了。</p>
 </li>
 </ul>
-<h3 id="6-博客个性化配置"><a href="#6-博客个性化配置" class="headerlink" title="6. 博客个性化配置"></a>6. 博客个性化配置</h3><h3 id="7-结尾感想"><a href="#7-结尾感想" class="headerlink" title="7. 结尾感想"></a>7. 结尾感想</h3>
+<h3 id="6-博客个性化配置"><a href="#6-博客个性化配置" class="headerlink" title="6. 博客个性化配置"></a>6. 博客个性化配置</h3><p>一些简单的标题配置之类的在<code>_config.yml</code>就可以设置了，我主要讲的就是比较炫酷的操作：</p>
+<ul>
+<li>评论系统</li>
+<li>博客相关统计</li>
+<li>博客背景音乐</li>
+<li>博客动态背景</li>
+<li>文章显示文章目录</li>
+<li>点击页面出现小心心</li>
+<li>等等</li>
+</ul>
+<h3 id="7-结尾感想"><a href="#7-结尾感想" class="headerlink" title="7. 结尾感想"></a>7. 结尾感想</h3>
         </div>
         <footer class="article-footer">
             
@@ -393,6 +412,16 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
+        <a href="/2018/06/29/相关技术汇总/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            相关技术汇总
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/2018/06/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
@@ -411,6 +440,26 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/06/29/相关技术汇总/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/tech.jpg)" alt="相关技术汇总" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/IT/">IT</a></p>
+                            <p class="item-title"><a href="/2018/06/29/相关技术汇总/" class="title">相关技术汇总</a></p>
+                            <p class="item-date"><time datetime="2018-06-29T08:05:44.000Z" itemprop="datePublished">2018-06-29</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -461,7 +510,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IT/">IT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/无言/">无言</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IT/">IT</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/无言/">无言</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -471,7 +520,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -481,7 +530,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -556,9 +605,12 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
 
 
+
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
 <script src="/js/love.js"></script>
+<script src="/photoSwipe/photoswipe.js"></script>
+<script src="/photoSwipe/photoswipe-ui-default.js"></script>
 
     </div>
 </body>

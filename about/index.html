@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
     <link rel="stylesheet" href="/css/style.css">
-
+    
     <script src="/libs/jquery/2.2.4/jquery.min.js"></script>
     
     
@@ -47,26 +47,31 @@
     
 
 
+
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
     <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
     <style>
-    .pace .pace-progress {
-        background: #191970; /*进度条颜色*/
-        height: 5px;
-    }
-    .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
-    }
-    .pace .pace-activity {
-        border-top-color: #191970;    /*上边框颜色*/
-        border-left-color: #191970;    /*左边框颜色*/
-    }
+	    .pace .pace-progress {
+		background: #191970; /*进度条颜色*/
+		height: 5px;
+	    }
+	    .pace .pace-progress-inner {
+		 box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+	    }
+	    .pace .pace-activity {
+		border-top-color: #191970;    /*上边框颜色*/
+		border-left-color: #191970;    /*左边框颜色*/
+	    }
     
-</style>
+    </style>
     <link rel="stylesheet" href="/css/APlayer.min.css">
     <script src="/libs/player/APlayer.min.js"></script>
     <script src="/libs/player/Meting.min.js"></script>
+    <link rel="stylesheet" href="/css/ins.css">
+    <link rel="stylesheet" href="/photoSwipe/photoswipe.css">
+    <link rel="stylesheet" href="/photoSwipe/default-skin.css">
+    <script src="/js/vue.min.js"></script>
 </head>
 
 <body>
@@ -107,6 +112,10 @@
                             
                                         <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IT/">IT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/无言/">无言</a></li></ul>
                                     
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/photos/">相册</a>
+                                </li>
+                            
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
@@ -157,7 +166,7 @@
         </div>
     </div>
 </header>
-<a href="https://github.com/violinxsc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/violinxsc"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://resource-1256567675.cos.ap-beijing.myqcloud.com/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -307,6 +316,26 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/29/相关技术汇总/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/tech.jpg)" alt="相关技术汇总" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/IT/">IT</a></p>
+                            <p class="item-title"><a href="/2018/06/29/相关技术汇总/" class="title">相关技术汇总</a></p>
+                            <p class="item-date"><time datetime="2018-06-29T08:05:44.000Z" itemprop="datePublished">2018-06-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/19/hexo博客教程/" class="thumbnail">
     
     
@@ -353,7 +382,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IT/">IT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/无言/">无言</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IT/">IT</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/无言/">无言</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -363,7 +392,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -373,7 +402,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -448,9 +477,12 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
 
 
+
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
 <script src="/js/love.js"></script>
+<script src="/photoSwipe/photoswipe.js"></script>
+<script src="/photoSwipe/photoswipe-ui-default.js"></script>
 
     </div>
 </body>
