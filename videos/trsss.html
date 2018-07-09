@@ -10,17 +10,17 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="创建时间:2018-06-28              |      	浏览次数:次        	Photos 	Musics 	Videos   	 		 	     var myVid=document.getElementById(&quot;video&quot;); var url=&quot;https://videos-1256567675.cos.ap">
+    <meta name="description" content="创建时间:2018-06-28              |      	浏览次数:次        	Photos 	Musics 	Videos     var url=&quot;https://videos-1256567675.cos.ap-beijing.myqcloud.com/&quot;; var player = videojs(video);">
 <meta property="og:type" content="website">
 <meta property="og:title" content="视频">
-<meta property="og:url" content="http://yoursite.com/videos/test.html">
+<meta property="og:url" content="http://yoursite.com/videos/trsss.html">
 <meta property="og:site_name" content="终">
-<meta property="og:description" content="创建时间:2018-06-28              |      	浏览次数:次        	Photos 	Musics 	Videos   	 		 	     var myVid=document.getElementById(&quot;video&quot;); var url=&quot;https://videos-1256567675.cos.ap">
+<meta property="og:description" content="创建时间:2018-06-28              |      	浏览次数:次        	Photos 	Musics 	Videos     var url=&quot;https://videos-1256567675.cos.ap-beijing.myqcloud.com/&quot;; var player = videojs(video);">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-06T08:23:47.461Z">
+<meta property="og:updated_time" content="2018-07-09T03:22:51.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="视频">
-<meta name="twitter:description" content="创建时间:2018-06-28              |      	浏览次数:次        	Photos 	Musics 	Videos   	 		 	     var myVid=document.getElementById(&quot;video&quot;); var url=&quot;https://videos-1256567675.cos.ap">
+<meta name="twitter:description" content="创建时间:2018-06-28              |      	浏览次数:次        	Photos 	Musics 	Videos     var url=&quot;https://videos-1256567675.cos.ap-beijing.myqcloud.com/&quot;; var player = videojs(video);">
     
 
     
@@ -177,7 +177,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/videos/test.html">视频</em>
+    <em class="page-title-link" data-url="/videos/trsss.html">视频</em>
     </h1>
 </div>
                         <div class="main-body-content">
@@ -215,41 +215,43 @@
 	<a class="photos-btn" href="/musics">Musics</a>
 	<a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="noopener">Videos</a>
 </div>
-<ul id="app">
-	<template v-for="bean in list">
-		<li><a href="javascript:void(0)" v-on:click="playVideo(bean);" target="_blank" rel="noopener"><span v-html="bean"></span></a></li>
-	</template>
-</ul>
-<video poster="../images/video.png" class="" id="video" controls="controls" loop="loop"></video>
 
+<video id="video" class="video-js vjs-default-skin" controls width="640px" height="360px"></video>
 <script>
-var myVid=document.getElementById("video");
 var url="https://videos-1256567675.cos.ap-beijing.myqcloud.com/";
+var player = videojs(video);
 $(document).ready(function(){
 	var array=new Array();
 	$.get(url,function(data){
 		var objList= data.getElementsByTagName('Key');    //获取视频项目列表
 		for(var i=0;i<objList.length;i++){
 			var keyStr=objList[i].innerHTML;
-			if(keyStr.indexOf("/")==-1){
+			if(keyStr.indexOf("mp4/")!=-1 && keyStr!="mp4/"){
 				array.push(objList[i].innerHTML);
 			}
 		}
-		var app=new Vue({
-		  el: '#app',
-		  data: {
-		    list:array
-		  }
-		});
+		//构造playList
+		var playList=new Array();    //播放列表
+		for(var j=0;j<array.length;j++){
+			array[j]=encodeURI(array[j]);
+			var playObj=new Object();
+			//
+			var sourceList=new Array();
+			var sourceObj=new Object();
+			sourceObj.src=url+array[j];
+			sourceObj.type="video/mp4"
+			sourceList.push(sourceObj);
+			playObj.sources=sourceList;
+			playObj.poster="https://resource-1256567675.cos.ap-beijing.myqcloud.com/video.png";
+			//
+			playList.push(playObj);
+		}
+		//
+		//console.log(JSON.stringify(playList));
+		player.playlist(playList);
 	}
 	);
 });
-//播放视频
-function playVideo(name){
-	myVid.src=url+name;   ///待修改
-	myVid.load();
-	myVid.play();
-}
 </script>
         </div>
         <footer class="article-footer">
