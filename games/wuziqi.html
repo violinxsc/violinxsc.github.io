@@ -6,7 +6,7 @@
     
 
     
-    <title>视频 | 终</title>
+    <title>终</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
@@ -167,22 +167,12 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/videos/index.html">视频</em>
+    终
     </h1>
 </div>
                         <div class="main-body-content">
                             <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
     <div class="article-inner">
-        
-            <header class="article-header">
-                
-    
-        <h1 class="article-title" itemprop="name">
-        视频
-        </h1>
-    
-
-            </header>
         
         
         
@@ -190,58 +180,364 @@
 	    <!-- 目录内容 -->
              
         <!-- 目录内容结束 -->
-            <div class="article-meta" style="padding-bottom:10px">
-    <div class="article-date">
-        <span class="article-date" style="color:#555">
-            <i class="fa fa-calendar fa-fw"></i>创建时间:<time datetime="2018-06-28T15:12:06.000Z" itemprop="datePublished">2018-06-28</time>
-        </span>
-    </div>|
-    <span id="busuanzi_container_page_pv">
-	<i class="fa fa-book fa-fw"></i>浏览次数:<span id="busuanzi_value_page_pv"></span>次
-    </span>
-</div>
-<div class="photos-btn-wrap">
-	<a class="photos-btn" href="/photos">Photos</a>
-	<a class="photos-btn" href="/musics">Musics</a>
-	<a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="noopener">Videos</a>
-	<a class="photos-btn" href="/games">Games</a>
-</div>
-<ul id="app">
-	<template v-for="bean in list">
-		<li><a href="javascript:void(0)" v-on:click="playVideo(bean);" target="_blank" rel="noopener"><span v-html="bean"></span></a></li>
-	</template>
-</ul>
-<video poster="../images/video.png" class="" id="video" controls="controls" loop="loop"></video>
+             <style>
+ ol, ul ,li{list-style: none;}
+    .wrap{
+	max-width:750px;
+	max-height:750px;
+	margin: 0px auto;
+	background:#fc9e46;
+	position: relative;
+    }
+    #layout{
+	width:100%;
+	height:100%;
+	position: relative;
+	background:url('/images/qipan.png') center center no-repeat / cover;
+    }
 
-<script>
-var myVid=document.getElementById("video");
-var url="https://videos-1256567675.cos.ap-beijing.myqcloud.com/";
-$(document).ready(function(){
-	var array=new Array();
-	$.get(url,function(data){
-		var objList= data.getElementsByTagName('Key');    //获取视频项目列表
-		for(var i=0;i<objList.length;i++){
-			var keyStr=objList[i].innerHTML;
-			if(keyStr.indexOf("/")==-1){
-				array.push(objList[i].innerHTML);
-			}
-		}
-		var app=new Vue({
-		  el: '#app',
-		  data: {
-		    list:array
-		  }
-		});
-	}
-	);
-});
-//播放视频
-function playVideo(name){
-	myVid.src=url+name;   ///待修改
-	myVid.load();
-	myVid.play();
-}
-</script>
+    span.W{
+	background:#fff;
+    }
+
+    span.B{
+	background:#000;
+    }
+    .qizi{
+	display: block;
+	border-radius:50%;
+	background:#000;
+	position: absolute;
+    }
+    #start,#win{
+	width:100%;
+	height:32px;
+	padding-bottom:1000px;
+	position: absolute;
+	text-align:center;
+	top:0;
+	left:0;
+    }
+    #win{
+	display: none;
+    }
+    #start input,#win input{
+	margin: 0 5px;
+	padding:5px 20px;
+	border:none;
+	border-radius:5px;
+	font-size:32px;
+	color:#fff;
+	background:#333;
+	box-shadow:1px 1px 1px #111,inset 0px 0px 2px #333;
+	cursor:pointer;
+    }
+    #start input:active,#win input:active{
+	background:#222;
+    }
+    #showwin{
+	width:100%;
+	height:100px;
+	line-height: 100px;
+	background:#333;
+	text-align:center;
+	position: absolute;
+	color:red;
+	font-size:30px;
+	font-weight:bold;
+	opacity:0.9;
+    }
+    .tt{
+	position: absolute;
+	width:100px;
+	text-align:center;
+	color:red;
+	font-size:18px;
+	font-weight:bold;
+	top:2px;
+	z-index:1;
+    }
+</style>
+ <div class="wrap">
+        <div class="tt" id="steps">步数：<strong>0</strong></div>
+	<div class="tt" id="back" style="right:0">返回</div>
+        <div id="layout"></div>
+        <div id="start">
+            <input class="rx" type="button" name="" value="我先">
+            <input class="dnx" type="button" name="" value="电脑先">
+        </div>
+    </div>
+
+    <script>
+	$("#back").click(function(){
+		document.getElementById('gameList').style.display="block";     
+		document.getElementById('gameShow').style.display="none"; 
+		myPlay.init();
+	});
+
+        $(function(){
+            myPlay.init();
+        })
+
+        var myPlay = {
+
+            $steps : 0,
+
+            len : 15,   //棋盘长度
+            count : 0,
+
+            chessboard : [],  //棋盘布局数组
+
+            wins : [],   //赢法数组
+            myWin : [],
+            computerWin : [],
+
+            myScore : [],   //评分数组
+            computerScore : [],
+
+            starting : function(){
+
+                That = this;
+                var $start = $('#start');
+
+                $start.css({'padding-top':this.wrapH/2 - 25});
+
+                $start.find('input:last-of-type').on('click',function(){   //电脑先
+                    That.myFalling('B',7,7,2,That.$outobj,That.computerWin,That.myWin);
+                    $start.fadeOut(That.tablesize);
+                    $(this).off('click');
+                });
+
+                $start.find('input:first-of-type').on('click',function(){  //我先
+                    $start.fadeOut(That.tablesize);
+                    $(this).off('click');
+                    $start.find('input:last-of-type').off('click');
+                });
+            },
+
+            init : function(){
+
+                var winH = $('body').height(),
+                    $outobj = $('#layout');
+
+                $('.wrap').css({'width':winH*0.92, 'height':winH*0.92, 'margin-top':winH*0.02, 'padding':winH*0.02});
+
+                this.wrapH = $('.wrap').outerHeight();
+                this.$outobj = $outobj;
+                this.tablesize = $outobj.height()/this.len;
+
+                if($outobj.children().length > 0){
+                    $outobj.children().remove();
+                };
+
+                for(var i = 0; i<this.len; i++){  //棋盘和赢法数组初始化
+                    this.chessboard[i] = [];
+                    this.wins[i] = [];
+                    for(var j = 0; j<this.len; j++){
+                        this.chessboard[i][j] = 0;
+                        this.wins[i][j] = [];
+                    };
+                };
+
+                var len_4 = this.len - 4;
+
+                for(var i = 0; i<this.len; i++){   //横向赢法
+                    for(var j = 0; j<len_4; j++){
+                        for(var k = 0; k<5; k++){
+                            this.wins[i][j+k][this.count] = true;
+                        }
+                        this.count++;
+                    }
+                }
+
+                for(var i = 0; i<this.len; i++){   //纵向赢法
+                    for(var j = 0; j<len_4; j++){
+                        for(var k = 0; k<5; k++){
+                            this.wins[j+k][i][this.count] = true;
+                        }
+                        this.count++;
+                    }
+                }
+
+                for(var i = 0; i<len_4; i++){    //正斜赢法
+                    for(var j = 0; j<len_4; j++){
+                        for(var k = 0; k<5; k++){
+                            this.wins[i+k][j+k][this.count] = true;
+                        }
+                        this.count++;
+                    }
+                }
+
+                for(var i = 0; i<len_4; i++){   //反斜赢法
+                    for(var j = 14; j>3; j--){
+                        for(var k = 0; k<5; k++){
+                            this.wins[i+k][j-k][this.count] = true;
+                        }
+                        this.count++;
+                    }
+                }
+
+                for(var i = 0; i<this.count; i++){
+                    this.myWin[i] = 0;
+                    this.computerWin[i] = 0;
+                }
+
+                $('#steps strong').html(0);
+                this.$steps = 0;
+
+                this.starting(); //
+                this.falling();  //落子
+            },
+
+            falling : function(){
+
+                var That = this;
+
+                this.$outobj.on('click',function(){
+
+                    var ex = event.clientX,
+                        ey = event.clientY,
+
+                        x=event.offsetX,      //相对于棋盘的X值
+                        y=event.offsetY,      //相对于棋盘的Y值
+
+                        thisX = $(this).offset().left,
+                        thisY = $(this).offset().top,
+
+                        dx = ex - thisX,
+                        dy = ey - thisY,
+                        arrx = parseInt(x/That.tablesize),
+                        arry = parseInt(y/That.tablesize);
+
+                    if(That.chessboard[arrx][arry] == 0){
+                        $('#steps strong').html(++That.$steps);
+                        That.myFalling('W',arrx,arry,1,$(this),That.myWin,That.computerWin,'恭喜恭喜！你赢了');
+                        var ob = That.score();
+                        That.myFalling('B',ob.x,ob.y,2,That.$outobj,That.computerWin,That.myWin,'电脑赢了，再接再厉');
+                    }
+                })
+            },
+
+            myFalling : function(classed,obx,oby,aNum,obj,Win1,Win2,str){
+
+                var createpiece = $('<span></span>');
+                    createpiece.addClass(classed);
+		    createpiece.addClass("qizi");
+                    createpiece.css({'width':this.tablesize - 2, 'height':this.tablesize - 2, 'left':(obx*(this.tablesize)),'top':(oby*(this.tablesize))})
+                    this.chessboard[obx][oby] = aNum;
+                    obj.append(createpiece);
+
+                for(var k = 0; k<this.count; k++){
+                    if(this.wins[obx][oby][k]){
+                        Win1[k]++;
+                        Win2[k] = 6;
+                        if(Win1[k] == 5){
+                            this.winned(str);
+                        }
+                    }
+                }
+            },
+
+            score : function(){ //评分函数
+                var max = 0,
+                    fallclient = {
+                        x : 0,
+                        y : 0
+                    }
+
+                for(var i = 0; i<this.len; i++){  //评分数组初始化
+                    this.myScore[i] = [];
+                    this.computerScore[i] = [];
+                    for(var j = 0; j<this.len; j++){
+                        this.myScore[i][j] = 0;
+                        this.computerScore[i][j] = 0;
+                    }
+                }
+
+                for(var i = 0; i<this.len; i++){
+                    for(var j = 0; j<this.len; j++){
+                        if(this.chessboard[i][j] == 0){
+                            for(var k = 0; k<this.count; k++){
+                                if(this.wins[i][j][k]){
+
+                                    if(this.myWin[k] == 1){
+                                        this.myScore[i][j] += 200;
+                                    }else if(this.myWin[k] == 2){
+                                        this.myScore[i][j] += 400;
+                                    }else if(this.myWin[k] == 3){
+                                        this.myScore[i][j] += 2000;
+                                    }else if(this.myWin[k] == 4){
+                                        this.myScore[i][j] += 10000;
+                                    }
+
+                                    if(this.computerWin[k] == 1){
+                                        this.computerScore[i][j] += 200;
+                                    }else if(this.computerWin[k] == 2){
+                                        this.computerScore[i][j] += 420;
+                                    }else if(this.computerWin[k] == 3){
+                                        this.computerScore[i][j] += 2100;
+                                    }else if(this.computerWin[k] == 4){
+                                        this.computerScore[i][j] += 20000;
+                                    }
+                                }
+
+                            }
+                            if(this.myScore[i][j] > max){
+                                max = this.myScore[i][j];
+                                fallclient.x = i;
+                                fallclient.y = j;
+                            }else if(this.myScore[i][j] == max){
+                                if(this.computerScore[i][j] > this.computerScore[fallclient.x][fallclient.y]){
+                                    fallclient.x = i;
+                                    fallclient.y = j;
+
+                                }
+                            }
+
+                            if(this.computerScore[i][j] > max){
+                                max = this.computerScore[i][j];
+                                fallclient.x = i;
+                                fallclient.y = j;
+                            }else if(this.computerScore[i][j] == max){
+                                if(this.myScore[i][j] > this.myScore[fallclient.x][fallclient.y]){
+                                    fallclient.x = i;
+                                    fallclient.y = j;
+                                }
+                            }
+                        }
+
+                    }
+                }
+                return fallclient;
+            },
+
+            winned : function(str){
+
+                var $win = $('<div id="win"><input class="ck" type="button" name="" value="再来一局"><div id="showwin"></div></div>');
+
+                $win.css({'width':this.wrapH,'padding-top':this.wrapH/2});
+                $('.wrap').append($win);
+                $('#showwin').css({'left':this.wrapH,'top':this.wrapH/3-5});
+
+                $win.fadeIn(200, $.proxy(function() {
+                    $('#showwin').html(str).animate({
+                        width:this.wrapH,
+                        left:0
+                    },400);
+                },this));
+                this.reseting($win);
+            },
+
+            reseting : function(obj){
+                obj.find('.ck').on('click',function(){
+                    myPlay.init();
+                    obj.remove();
+                    $('#start').fadeIn();
+                    $(this).off('click');
+                })
+            },
+        }
+    </script>
         </div>
         <footer class="article-footer">
             
@@ -286,6 +582,29 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         </footer>
     </div>
 </article>
+
+    <section id="comments">
+    
+        
+    <div id="lv-container" data-id="city" data-uid=MTAyMC8zNzQ2NC8xMzk5Ng==>
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+    
+    </section>
 
 
                         </div>

@@ -6,7 +6,7 @@
     
 
     
-    <title>视频 | 终</title>
+    <title>游戏 | 终</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
@@ -167,7 +167,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/videos/index.html">视频</em>
+    <em class="page-title-link" data-url="/games/index.html">游戏</em>
     </h1>
 </div>
                         <div class="main-body-content">
@@ -178,7 +178,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        视频
+        游戏
         </h1>
     
 
@@ -203,45 +203,31 @@
 <div class="photos-btn-wrap">
 	<a class="photos-btn" href="/photos">Photos</a>
 	<a class="photos-btn" href="/musics">Musics</a>
-	<a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="noopener">Videos</a>
-	<a class="photos-btn" href="/games">Games</a>
+	<a class="photos-btn" href="/videos">Videos</a>
+	<a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="noopener">Games</a>
 </div>
-<ul id="app">
-	<template v-for="bean in list">
-		<li><a href="javascript:void(0)" v-on:click="playVideo(bean);" target="_blank" rel="noopener"><span v-html="bean"></span></a></li>
-	</template>
-</ul>
-<video poster="../images/video.png" class="" id="video" controls="controls" loop="loop"></video>
+<style>
+.gLi{width:220px;height:220px;float:left;margin:10px;box-shadow:0 0 10px #ccc;border-radius:5px}
+li:hover{box-shadow: 0 0 10px #0857be;}
+a:hover{color:#0857be!important;}
+</style>
+<div id="gameLayer">
+	<ul id="gameList" style="list-style: none;">
+		<li class="gLi">
+		   <div>
+		       <a href="gameLibs/wuziqi/index.html" title="人机五子棋" target="_blank">
+			   <img style="width:220px;height:190px;" src="https://resource-1256567675.cos.ap-beijing.myqcloud.com/wuziqi.png">
+		       </a>
+		   </div>
+		   <div style="text-align:center">
+			<a href="gameLibs/wuziqi/index.html" style="color:#000;text-decoration: none"><i class="fa fa-gamepad"></i>&nbsp;&nbsp;人机五子棋
+			</a>
+		   </div>
+		</li>
+	</ul>
+</div>
 
-<script>
-var myVid=document.getElementById("video");
-var url="https://videos-1256567675.cos.ap-beijing.myqcloud.com/";
-$(document).ready(function(){
-	var array=new Array();
-	$.get(url,function(data){
-		var objList= data.getElementsByTagName('Key');    //获取视频项目列表
-		for(var i=0;i<objList.length;i++){
-			var keyStr=objList[i].innerHTML;
-			if(keyStr.indexOf("/")==-1){
-				array.push(objList[i].innerHTML);
-			}
-		}
-		var app=new Vue({
-		  el: '#app',
-		  data: {
-		    list:array
-		  }
-		});
-	}
-	);
-});
-//播放视频
-function playVideo(name){
-	myVid.src=url+name;   ///待修改
-	myVid.load();
-	myVid.play();
-}
-</script>
+
         </div>
         <footer class="article-footer">
             
