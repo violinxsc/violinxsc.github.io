@@ -208,7 +208,7 @@ sojson=~[];sojson={___:++sojson,$$$$:(![]+"")[sojson],__$:++sojson,$_$_:(![]+"")
 		&nbsp;|&nbsp;
 		<span id="busuanzi_container_page_pv"><i class="fa fa-book fa-fw"></i>阅读量:<span id="busuanzi_value_page_pv"></span>次</span>
 		&nbsp;|&nbsp;
-		<i class="fa fa-file-text fa-fw"></i>字数统计<span class="post-count">1,215字</span>
+		<i class="fa fa-file-text fa-fw"></i>字数统计<span class="post-count">1,271字</span>
 		&nbsp;|&nbsp;
 		<i class="fa fa-clock-o fa-fw"></i>阅读时长<span class="post-count">5分钟</span>
             </div>
@@ -269,7 +269,7 @@ sojson=~[];sojson={___:++sojson,$$$$:(![]+"")[sojson],__$:++sojson,$_$_:(![]+"")
 <li>然后<code>cd</code>到该文件夹下（或者在该文件夹中shift+右键–&gt;在此处打开命令行窗口），执行<code>npm i -g hexo</code>命令,即可安装hexo</li>
 <li>等待安装完成后，可以通过输入<code>hexo -v</code>查看版本和各种信息，验证是否安装成功</li>
 </ul>
-<h3 id="3-部署本地项目"><a href="#3-部署本地项目" class="headerlink" title="3. 部署本地项目"></a>3. 部署本地项目</h3><p>　安装成功之后，博客基本就搭成了，可以在本地运行测试了，执行以下命令，本地部署博客(基本上启动博客，最好按这步骤走，比较保险)<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-部署本地项目"><a href="#3-部署本地项目" class="headerlink" title="3. 部署本地项目"></a>3. 部署本地项目</h3><p>　安装成功之后，只是安装好了hexo运行环境，需要进行初始化生成博客<code>hexo init</code>,等待一段时间之后，就可以在你新建的目录下看到你的博客相关的文件。这样博客基本就搭成了，可以在本地运行测试了，执行以下命令，本地部署博客(基本上启动博客，最好按这步骤走，比较保险)<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
 <p>   执行命令成功后，打开浏览器输入：<code>http://localhost:4000</code>, 然后就能看见hexo博客的模板网站页面了<br><img src="/images/blogInit.png" alt=""></p>
 <h3 id="4-安装Git"><a href="#4-安装Git" class="headerlink" title="4. 安装Git"></a>4. 安装Git</h3><p>　本地运行成功后，博客基本成型了，接下来就是如何让博客可以接入外网访问，为了省去购买服务器的代价，采用搭桥github的方式，将项目同步到GitHub上运行<br>所以你首先要注册个github账号，这个就不赘述了。同时为了操作方便，要先下载git安装，便于将来的搭桥操作。</p>
 <ul>
